@@ -49,21 +49,21 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -4 }}
               className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 relative group"
             >
               <Quote className="absolute top-8 right-8 text-slate-100 w-12 h-12 group-hover:text-sky-100 transition-colors" />
-              
+
               <div className="flex items-center gap-1 text-yellow-400 mb-6">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
               </div>
-              
+
               <p className="text-slate-700 leading-relaxed mb-8 relative z-10">
                 "{testimonial.text}"
               </p>
-              
+
               <div className="flex items-center gap-4">
                 <img
                   src={testimonial.avatar}

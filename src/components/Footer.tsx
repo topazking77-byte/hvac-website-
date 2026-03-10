@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Clock, Heart } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -90,7 +90,7 @@ export default function Footer() {
 
         <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
           <p>&copy; {new Date().getFullYear()} JMAC Heating & Cooling All rights reserved.</p>
-          <p>Designed with ❤️ in Arizona.</p>
+          <p className="flex items-center gap-1">Designed with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> in Arizona.</p>
         </div>
       </div>
     </footer>
