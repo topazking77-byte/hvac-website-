@@ -3,23 +3,30 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Services from './components/Services';
+import WhyChooseUs from './components/WhyChooseUs';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
+import ScheduleModal from './components/ScheduleModal';
+import QuoteModal from './components/QuoteModal';
+import { useState } from 'react';
 
 export default function App() {
+  const [isScheduleOpen, setIsScheduleOpen] = useState(false);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   return (
-    <div className="font-sans antialiased text-slate-900 bg-white selection:bg-sky-200 selection:text-sky-900">
-      <Navbar />
+    <div className="font-sans antialiased text-black bg-white selection:bg-yellow-200 selection:text-yellow-900">
+      <Navbar onOpenSchedule={() => setIsScheduleOpen(true)} />
       <main>
-        <Hero />
+        <Hero onOpenSchedule={() => setIsScheduleOpen(true)} onOpenQuote={() => setIsQuoteOpen(true)} />
         <Features />
+        <WhyChooseUs />
         <Services />
-        
+
         {/* CTA Section */}
-        <section className="py-24 bg-sky-600 relative overflow-hidden">
+        <section className="py-24 bg-yellow-600 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
           <div className="container mx-auto px-6 relative z-10 text-center">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -27,15 +34,16 @@ export default function App() {
             >
               Ready to Feel the Difference?
             </motion.h2>
-            <p className="text-xl text-sky-100 mb-12 max-w-2xl mx-auto">
-              Schedule your service today and get $50 off your first repair. 
+            <p className="text-xl text-yellow-100 mb-12 max-w-2xl mx-auto">
+              Schedule your service today and get $50 off your first repair.
               Don't let the heat win.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <motion.button
+                onClick={() => setIsScheduleOpen(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-sky-600 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all"
+                className="bg-white text-yellow-600 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all"
               >
                 Schedule Now
               </motion.button>
@@ -44,7 +52,7 @@ export default function App() {
                 whileTap={{ scale: 0.95 }}
                 className="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all"
               >
-                Call (555) 123-4567
+                Call (602) 279-2665
               </motion.button>
             </div>
           </div>
@@ -53,6 +61,15 @@ export default function App() {
         <Testimonials />
       </main>
       <Footer />
+
+      <ScheduleModal
+        isOpen={isScheduleOpen}
+        onClose={() => setIsScheduleOpen(false)}
+      />
+      <QuoteModal
+        isOpen={isQuoteOpen}
+        onClose={() => setIsQuoteOpen(false)}
+      />
     </div>
   );
 }

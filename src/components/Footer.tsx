@@ -1,26 +1,24 @@
-import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300 py-16">
+    <footer className="bg-black text-zinc-300 py-16">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
             <a href="#" className="flex items-center gap-2 mb-6 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-sky-400 to-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-sky-500/50 transition-all duration-300">
-                A
-              </div>
-              <span className="font-display font-bold text-2xl text-white tracking-tight">
-                Arctic<span className="text-sky-500">Air</span>
+              <img src="/brand-logo.png" alt="JMAC Heating & Cooling Logo" className="w-12 h-12 object-contain rounded-full bg-white/10 p-1" />
+              <span className="font-display font-bold text-2xl tracking-tight text-white">
+                JMAC<span className="text-yellow-500">HVAC</span>
               </span>
             </a>
-            <p className="text-slate-400 leading-relaxed mb-6">
-              Premium HVAC solutions for Arizona homes. We're dedicated to your comfort, 24/7.
+            <p className="text-zinc-400 leading-relaxed mb-6">
+              Premium HVAC solutions for Arizona homes. We're dedicated to your comfort.
             </p>
             <div className="flex gap-4">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-500 hover:text-white transition-all">
+                <a key={i} href="#" className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-yellow-500 hover:text-white transition-all">
                   <Icon className="w-5 h-5" />
                 </a>
               ))}
@@ -31,21 +29,28 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white text-lg mb-6">Quick Links</h4>
             <ul className="space-y-4">
-              {['Services', 'About Us', 'Financing', 'Reviews', 'Careers', 'Privacy Policy'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="hover:text-sky-400 transition-colors">{link}</a>
+              {[
+                { name: 'Services', href: '#services' },
+                { name: 'About Us', href: '#about' },
+                { name: 'Financing', href: '#contact' },
+                { name: 'Reviews', href: '#reviews' },
+                { name: 'Careers', href: '#' },
+                { name: 'Privacy Policy', href: '#' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="hover:text-yellow-400 transition-colors">{link.name}</a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Areas We Serve */}
           <div>
-            <h4 className="font-bold text-white text-lg mb-6">Our Services</h4>
+            <h4 className="font-bold text-white text-lg mb-6">Areas We Serve</h4>
             <ul className="space-y-4">
-              {['AC Installation', 'AC Repair', 'Heating Services', 'Maintenance Plans', 'Indoor Air Quality', 'Commercial HVAC'].map((link) => (
+              {['Mesa', 'Chandler', 'Gilbert', 'Tempe', 'Scottsdale', 'Phoenix'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="hover:text-sky-400 transition-colors">{link}</a>
+                  <a href="#" className="hover:text-yellow-400 transition-colors">{link}</a>
                 </li>
               ))}
             </ul>
@@ -56,23 +61,35 @@ export default function Footer() {
             <h4 className="font-bold text-white text-lg mb-6">Contact Us</h4>
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-sky-500 shrink-0" />
-                <span>1234 Cool Breeze Lane,<br />Phoenix, AZ 85001</span>
+                <MapPin className="w-6 h-6 text-yellow-500 shrink-0" />
+                <span>1234 Heating Way,<br />Mesa, AZ 85206</span>
               </li>
               <li className="flex items-center gap-4">
-                <Phone className="w-6 h-6 text-sky-500 shrink-0" />
-                <a href="tel:+15551234567" className="hover:text-white transition-colors">(555) 123-4567</a>
+                <Phone className="w-6 h-6 text-yellow-500 shrink-0" />
+                <a href="tel:+14807883730" className="hover:text-white transition-colors">(602) 279-2665</a>
               </li>
               <li className="flex items-center gap-4">
-                <Mail className="w-6 h-6 text-sky-500 shrink-0" />
-                <a href="mailto:info@arcticairaz.com" className="hover:text-white transition-colors">info@arcticairaz.com</a>
+                <Mail className="w-6 h-6 text-yellow-500 shrink-0" />
+                <a href="mailto:info@crycool.com" className="hover:text-white transition-colors">info@crycool.com</a>
+              </li>
+              <li className="flex items-start gap-4">
+                <Clock className="w-6 h-6 text-yellow-500 shrink-0 mt-1" />
+                <div className="flex flex-col gap-1">
+                  <div className="flex justify-between w-48"><span className="font-semibold text-white">Monday</span><span>5:00 AM - 5:00 PM</span></div>
+                  <div className="flex justify-between w-48"><span className="font-semibold text-white">Tuesday</span><span>5:00 AM - 5:00 PM</span></div>
+                  <div className="flex justify-between w-48"><span className="font-semibold text-white">Wednesday</span><span>5:00 AM - 5:00 PM</span></div>
+                  <div className="flex justify-between w-48"><span className="font-semibold text-white">Thursday</span><span>5:00 AM - 5:00 PM</span></div>
+                  <div className="flex justify-between w-48"><span className="font-semibold text-white">Friday</span><span>5:00 AM - 5:00 PM</span></div>
+                  <div className="flex justify-between w-48"><span className="font-semibold text-white">Saturday</span><span>Closed</span></div>
+                  <div className="flex justify-between w-48"><span className="font-semibold text-white">Sunday</span><span>Closed</span></div>
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Arctic Air Arizona. All rights reserved.</p>
+        <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
+          <p>&copy; {new Date().getFullYear()} JMAC Heating & Cooling All rights reserved.</p>
           <p>Designed with ❤️ in Arizona.</p>
         </div>
       </div>

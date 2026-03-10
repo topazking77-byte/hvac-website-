@@ -13,7 +13,7 @@ const testimonials = [
     name: "Michael Torres",
     location: "Phoenix, AZ",
     rating: 5,
-    text: "I've used several HVAC companies over the years, but Arctic Air is by far the best. Their upfront pricing meant no surprises, and the new system they installed has lowered our electric bill significantly.",
+    text: "I've used several HVAC companies over the years, but JMAC Heating & Cooling is by far the best. Their upfront pricing meant no surprises, and the new system they installed has lowered our electric bill significantly.",
     avatar: "https://i.pravatar.cc/150?img=11",
   },
   {
@@ -37,7 +37,7 @@ export default function Testimonials() {
             Don't Just Take Our Word For It
           </h2>
           <p className="text-lg text-slate-600">
-            Join hundreds of satisfied homeowners across the Valley who trust Arctic Air for their comfort.
+            Join hundreds of satisfied homeowners across the Valley who trust JMAC Heating & Cooling for their comfort.
           </p>
         </div>
 

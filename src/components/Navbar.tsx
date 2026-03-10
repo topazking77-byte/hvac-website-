@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 import { Phone, Menu, X } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ onOpenSchedule }: { onOpenSchedule: () => void }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
@@ -20,9 +20,8 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -30,12 +29,9 @@ export default function Navbar() {
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          <div className="relative w-10 h-10 bg-gradient-to-br from-sky-400 to-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-sky-500/50 transition-all duration-300">
-            A
-            <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-          </div>
-          <span className={`font-display font-bold text-2xl tracking-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
-            Arctic<span className="text-sky-500">Air</span>
+          <img src="/brand-logo.png" alt="JMAC Heating & Cooling Logo" className="w-12 h-12 object-contain rounded-full bg-white/10 p-1" />
+          <span className={`font-display font-bold text-2xl tracking-tight ${isScrolled ? 'text-black' : 'text-white'}`}>
+            JMAC<span className="text-yellow-500">HVAC</span>
           </span>
         </a>
 
@@ -45,9 +41,8 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-sky-500 ${
-                isScrolled ? 'text-slate-600' : 'text-slate-200'
-              }`}
+              className={`text-sm font-medium transition-colors hover:text-yellow-500 ${isScrolled ? 'text-zinc-600' : 'text-zinc-200'
+                }`}
             >
               {link.name}
             </a>
@@ -57,18 +52,18 @@ export default function Navbar() {
         {/* CTA & Phone */}
         <div className="hidden md:flex items-center gap-6">
           <a
-            href="tel:+15551234567"
-            className={`flex items-center gap-2 font-semibold transition-colors ${
-              isScrolled ? 'text-slate-900' : 'text-white'
-            }`}
+            href="tel:+14807883730"
+            className={`flex items-center gap-2 font-semibold transition-colors ${isScrolled ? 'text-black' : 'text-white'
+              }`}
           >
-            <Phone className="w-4 h-4 text-sky-500" />
-            <span>(555) 123-4567</span>
+            <Phone className="w-4 h-4 text-yellow-500" />
+            <span>(602) 279-2665</span>
           </a>
           <motion.button
+            onClick={onOpenSchedule}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-lg shadow-sky-500/30 transition-all"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-lg shadow-yellow-500/30 transition-all"
           >
             Schedule Now
           </motion.button>
@@ -76,10 +71,10 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-slate-400 hover:text-white transition-colors"
+          className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X className={isScrolled ? "text-slate-900" : "text-white"} /> : <Menu className={isScrolled ? "text-slate-900" : "text-white"} />}
+          {isMobileMenuOpen ? <X className={isScrolled ? "text-black" : "text-white"} /> : <Menu className={isScrolled ? "text-black" : "text-white"} />}
         </button>
       </div>
 
@@ -89,24 +84,30 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="absolute top-full left-0 right-0 bg-white shadow-xl border-t border-slate-100 p-6 md:hidden flex flex-col gap-4"
+          className="absolute top-full left-0 right-0 bg-white shadow-xl border-t border-zinc-100 p-6 md:hidden flex flex-col gap-4"
         >
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-slate-600 font-medium py-2 hover:text-sky-500"
+              className="text-zinc-600 font-medium py-2 hover:text-yellow-500"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
             </a>
           ))}
-          <div className="h-px bg-slate-100 my-2" />
-          <a href="tel:+15551234567" className="flex items-center gap-2 font-semibold text-slate-900 py-2">
-            <Phone className="w-4 h-4 text-sky-500" />
-            (555) 123-4567
+          <div className="h-px bg-zinc-100 my-2" />
+          <a href="tel:+14807883730" className="flex items-center gap-2 font-semibold text-black py-2">
+            <Phone className="w-4 h-4 text-yellow-500" />
+            (602) 279-2665
           </a>
-          <button className="w-full bg-sky-500 text-white py-3 rounded-xl font-semibold shadow-lg shadow-sky-500/30">
+          <button
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              onOpenSchedule();
+            }}
+            className="w-full bg-yellow-500 text-white py-3 rounded-xl font-semibold shadow-lg shadow-yellow-500/30"
+          >
             Schedule Now
           </button>
         </motion.div>
